@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import {NavLink} from "react-router-dom";
 
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -9,9 +10,12 @@ import IconButton from "@material-ui/core/IconButton";
 import Avatar from "@material-ui/core/Avatar";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
+import "../../styles.css";
 
 
 function Bar(props) {
+
+    const activeStyle = { color: "#F3C74F", fontWeight: "bold" };
 
     const [menu, setMenu] = useState({
         anchorEl: null
@@ -60,6 +64,13 @@ function Bar(props) {
                     <Typography color="inherit" variant="h6">
                         Forum App
                     </Typography>
+
+                </Box>
+                <Box flexGrow={1}>
+                <nav>
+                    <NavLink activeStyle={activeStyle} className="navLinks" to="/" exact>Home</NavLink> | <NavLink activeStyle={activeStyle} className="activeStyle navLinks" to="/forums">Forums</NavLink> | {" "}
+                    <NavLink activeStyle={activeStyle} className="activeStyle navLinks" to="/about">About</NavLink>
+                 </nav>
                 </Box>
                 {props.isLoggedIn && (
                 <>

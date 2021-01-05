@@ -6,7 +6,6 @@ import NotFoundPage from "./NotFoundPage.js";
 import Bar from "./common/Bar.js";
 import {Route, Switch} from "react-router-dom";
 
-import Header from "./common/Header.js"
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Container from "@material-ui/core/Container";
 
@@ -47,7 +46,6 @@ function App() {
             <CssBaseline />
             <Bar onSignInClick={handleGoogleAuth} onSignOutClick={handleGoogleAuth} isLoggedIn={Auth.isLoggedIn} user={user}/>
             <Container maxWidth="xl">
-                <Header />
                 <Switch>
                 <Route path="/" component={HomePage} exact></Route>
                 <Route path="/forums" component={Forums}></Route>
