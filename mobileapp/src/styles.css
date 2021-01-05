@@ -1,0 +1,11 @@
+.accessibleButton {
+    background-color: #eb0052 !important;
+  }
+  
+  .accessibleButton:hover {
+    background-color: #bd0042 !important;
+  }
+  
+  .accessibleButton:focus {
+    background-color: #7a002b !important;
+  }
