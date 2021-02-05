@@ -11,6 +11,8 @@ import Avatar from "@material-ui/core/Avatar";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import "../../styles.css";
+import Profile from "../ManageProfile";
+import { firestore } from "../../firebase";
 
 
 function Bar(props) {
@@ -36,6 +38,11 @@ function Bar(props) {
     }
 
     const getNameInitials = () => {
+        // var temp =  firestore.collection("users").doc(props.user.email).get()
+        // console.log("Props user account", props.userAccount)
+        // console.log("Props user", props.user)
+        // console.log("TEMP", temp)
+
         const user = props.user;
 
         const displayName = user.displayName;
@@ -80,6 +87,7 @@ function Bar(props) {
 
                     <Menu anchorEl={menu.anchorEl} open={Boolean(menu.anchorEl)} onClose={closeMenu}>
                         <MenuItem disabled>{props.user.displayName}</MenuItem>
+                        <MenuItem ><a href="/profile">Manage Profile</a></MenuItem>
                         <MenuItem onClick={onSignOutClick}>Sign Out</MenuItem>
                     </Menu>
                 </>

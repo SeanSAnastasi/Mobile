@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, {useContext, useState} from "react";
 import HomePage from "./HomePage.js";
 import AboutPage from "./AboutPage.js";
 import Forums from "./Forums.js";
@@ -7,16 +7,21 @@ import Chat from "./Chat.js";
 import NotFoundPage from "./NotFoundPage.js";
 import Bar from "./common/Bar.js";
 import BottomNav from "./BottomNav.js"
-import {Route, Switch} from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Container from "@material-ui/core/Container";
 
 import firebase from "firebase";
 import {AuthContext} from "../index.js";
-import { firebaseConfig } from "../firebase.js";
+import { firebaseConfig, firestore } from "../firebase.js";
+import ManageProfile from "./ManageProfile.js";
+import { toast } from "react-toastify";
+
 
 function App() {
+
+    var temp
 
     const Auth = useContext(AuthContext);
 
@@ -26,13 +31,28 @@ function App() {
         )
     );
 
+    const [userAccount, setUserAccount] = useState()
+
     const handleGoogleAuth = () => {
         if(!Auth.isLoggedIn) {
             const provider = new firebase.auth.GoogleAuthProvider();
             firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
             .then(() => {
-                firebase.auth().signInWithPopup(provider).then(result => {
-                    console.log(result);
+                firebase.auth().signInWithPopup(provider).then(async (result) => {
+                    temp = await firestore.collection("users").doc(result.user.email).get()
+                    if(!(temp.exists)) {
+                        console.log("Not Exists")
+                        await firestore.collection("users").doc(result.user.email).set({
+                            email: result.user.email,
+                            displayName: result.user.displayName
+                        }).then(() => {
+                            //props.history.push("/users")
+                            toast.success("Successfully added new account")
+                        })
+                    } else {
+                        console.log("Exists", temp.data())
+                    }
+                    console.log("RESULT", result);
                     Auth.setLoggedIn(true);
                 }).catch((e) => console.error(e));
             });
@@ -47,7 +67,7 @@ function App() {
     return(
         <>
             <CssBaseline />
-            <Bar onSignInClick={handleGoogleAuth} onSignOutClick={handleGoogleAuth} isLoggedIn={Auth.isLoggedIn} user={user}/>
+            <Bar onSignInClick={handleGoogleAuth} onSignOutClick={handleGoogleAuth} isLoggedIn={Auth.isLoggedIn} user={user} userAccount={temp}/>
             <Container maxWidth="xl">
                 <Switch>
                 <Route path="/" component={HomePage} exact></Route>
@@ -55,7 +75,14 @@ function App() {
                 <Route path="/blog" component={Blog}></Route>
                 <Route path="/chat" component={Chat}></Route>
                 <Route path="/about" component={AboutPage}></Route>
+                <Route path="/profile" component={ManageProfile}></Route>
                 <Route component={NotFoundPage}></Route> 
+                
+                {/* <PrivateRoute 
+                    path="/profile"
+                    component={ManageProfile}
+                    isLoggedIn={Auth.isLoggedIn}
+                /> */}
                 {/* the not found page is the default statement of the switch*/}
                 </Switch>
             </Container>
@@ -63,5 +90,16 @@ function App() {
         </>
     );
 }
+
+function PrivateRoute({ component: Component, ...rest }) {
+    return (
+      <Route
+        {...rest}
+        render={props =>
+          rest.isLoggedIn ? <Component {...props} /> : <Redirect to="/" />
+        }
+      />
+    );
+  }
 
 export default App;
