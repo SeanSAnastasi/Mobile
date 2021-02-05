@@ -1,7 +1,5 @@
 import React from 'react';
-import clsx from 'clsx';
 import { useHistory } from 'react-router';
-import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
@@ -13,20 +11,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import MailIcon from '@material-ui/icons/ViewHeadline';
 
 
-const useStyles = makeStyles({
-  list: {
-    width: 250,
-  },
-  fullList: {
-    width: 'auto',
-  },
-});
-
-
-
 export default function TemporaryDrawer() {
     const history = useHistory();
-    const classes = useStyles();
     const [state, setState] = React.useState({
         open: false
       });

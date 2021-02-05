@@ -13,6 +13,8 @@ function Forums() {
         .then(querySnapshot => {
             const _forums = querySnapshot.docs.map(doc => {
                 let d = doc.data();
+
+                console.log(d);
                 return d;
             });
             console.log(_forums);

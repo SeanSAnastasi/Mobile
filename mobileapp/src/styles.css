@@ -40,3 +40,10 @@
 .hamburger svg{
   color: white;
 }
+.blog-header{
+  font-weight: bold;
+  font-size: 24px;
+  text-align: center;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
