@@ -2,8 +2,11 @@ import React, {useContext} from "react";
 import HomePage from "./HomePage.js";
 import AboutPage from "./AboutPage.js";
 import Forums from "./Forums.js";
+import Blog from "./Blog.js";
+import Chat from "./Chat.js";
 import NotFoundPage from "./NotFoundPage.js";
 import Bar from "./common/Bar.js";
+import BottomNav from "./BottomNav.js"
 import {Route, Switch} from "react-router-dom";
 
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -49,11 +52,14 @@ function App() {
                 <Switch>
                 <Route path="/" component={HomePage} exact></Route>
                 <Route path="/forums" component={Forums}></Route>
+                <Route path="/blog" component={Blog}></Route>
+                <Route path="/chat" component={Chat}></Route>
                 <Route path="/about" component={AboutPage}></Route>
                 <Route component={NotFoundPage}></Route> 
                 {/* the not found page is the default statement of the switch*/}
                 </Switch>
             </Container>
+            <BottomNav />
         </>
     );
 }

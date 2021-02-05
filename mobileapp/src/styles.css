@@ -19,13 +19,24 @@
 
 
 .accessibleButton {
-    background-color: #F3C74F !important;
-  }
-  
-  .accessibleButton:hover {
-    background-color: #F3C74F !important;
-  }
-  
-  .accessibleButton:focus {
-    background-color: #F3C74F !important;
-  }
+  background-color: #F3C74F !important;
+}
+
+.accessibleButton:hover {
+  background-color: #F3C74F !important;
+}
+
+.accessibleButton:focus {
+  background-color: #F3C74F !important;
+}
+.MuiBottomNavigation-root {
+  position: fixed;
+  bottom: 0;
+}
+
+.app-title{
+  text-align: center;
+}
+.hamburger svg{
+  color: white;
+}

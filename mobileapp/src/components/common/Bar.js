@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {NavLink} from "react-router-dom";
-
+import Drawer from "./Drawer";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
@@ -60,18 +60,14 @@ function Bar(props) {
     return (
         <AppBar color="primary" position="static">
             <Toolbar variant="regular">
+                <Drawer />
                 <Box flexGrow={1}>
-                    <Typography color="inherit" variant="h6">
+                    <Typography className="app-title" color="inherit" variant="h6">
                         Forum App
                     </Typography>
 
                 </Box>
-                <Box flexGrow={1}>
-                <nav>
-                    <NavLink activeStyle={activeStyle} className="navLinks" to="/" exact>Home</NavLink> | <NavLink activeStyle={activeStyle} className="activeStyle navLinks" to="/forums">Forums</NavLink> | {" "}
-                    <NavLink activeStyle={activeStyle} className="activeStyle navLinks" to="/about">About</NavLink>
-                 </nav>
-                </Box>
+                
                 {props.isLoggedIn && (
                 <>
                     <IconButton onClick={openMenu}>
