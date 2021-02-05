@@ -3,6 +3,7 @@ import HomePage from "./HomePage.js";
 import AboutPage from "./AboutPage.js";
 import Forums from "./Forums.js";
 import Blog from "./Blog.js";
+import SingleBlog from "./SingleBlog.js";
 import Chat from "./Chat.js";
 import NotFoundPage from "./NotFoundPage.js";
 import Bar from "./common/Bar.js";
@@ -72,6 +73,7 @@ function App() {
                 <Switch>
                 <Route path="/" component={HomePage} exact></Route>
                 <Route path="/forums" component={Forums}></Route>
+                <Route path="/blog/:id" component={SingleBlog}></Route>
                 <Route path="/blog" component={Blog}></Route>
                 <Route path="/chat" component={Chat}></Route>
                 <Route path="/about" component={AboutPage}></Route>
