@@ -47,3 +47,14 @@
   margin-top: 2%;
   margin-bottom: 2%;
 }
+.chat-buttons{
+  display: flex;
+  height: 84vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.chat-button.MuiButton-containedPrimary {
+  margin-bottom: 10%;
+}
