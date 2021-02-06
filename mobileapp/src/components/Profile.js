@@ -8,24 +8,16 @@ import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
 import Button from "@material-ui/core/Button";
 import TextField from '@material-ui/core/TextField';
-
-
+import { Autorenew } from "@material-ui/icons";
 
 function Profile(props) {
     var user = firebase.auth().currentUser;
-    const useStyles = makeStyles({
-        card: {
-            // maxWidth: 275
-        }
-    });
-
-    const classes = useStyles();
 
     console.log(props)
 
     return (
         <>
-        <Card className={classes.card}>
+        <Card  class="card-center">
             <CardContent>
                 <form onSubmit={props.onSubmit}>
                     <TextField
@@ -46,7 +38,7 @@ function Profile(props) {
                         error={props.errors.displayName}
                     ></TextInput> */}
 
-                    <CardActions style={{justifyContent: "center" }}>
+                    <CardActions style={{justifyContent: "center", marginTop: "20px" }}>
                         <Button
                             className="accessibleButton"
                             variant="contained"

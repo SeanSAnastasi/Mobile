@@ -1,11 +1,14 @@
 import React from "react";
+import "../styles.css";
 
 class AboutPage extends React.Component {
     render() {
         return (
         <>
-            <h1>About</h1>
+        <div class="centerContent">
+            <h1 class="header-1">About</h1>
             <p>This page uses React</p>
+        </div>
         </>
         );
     }

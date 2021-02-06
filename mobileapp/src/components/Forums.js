@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { firestore } from "../firebase";
 import ForumsList from "./ForumsList";
+import "../styles.css"
 
 //example showcasing how to get data from firestore
 function Forums() {
@@ -24,8 +25,10 @@ function Forums() {
 
     return (
         <> 
-        <h1>Forums List</h1>
-        <ForumsList forums={forums}/>
+        <div class="centerContent">
+            <h1 class="header-1">Forums List</h1>
+            <ForumsList forums={forums}/>
+        </div>
         </>
     );
 }

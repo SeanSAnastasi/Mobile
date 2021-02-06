@@ -4,6 +4,7 @@ import Profile from "./Profile.js";
 import { firebaseConfig, firestore } from "../firebase";
 import { toast } from "react-toastify";
 import { Redirect } from "react-router-dom";
+import "../styles.css"
 
 const ManageProfile = props => {
     const [errors, setErrors] = useState({});
@@ -106,14 +107,17 @@ const ManageProfile = props => {
 
     return (
         <>
-        <h1>Change Username</h1>
-        <Profile
-            user={userDetails}
-            onChange={handleChange}
-            onSubmit={handleSubmit}
-            errors={errors}
-        >
-        </Profile>
+        <div class="centerContent">
+            <h1 class="header-1">Change Username</h1>
+            <Profile
+                user={userDetails}
+                onChange={handleChange}
+                onSubmit={handleSubmit}
+                errors={errors}
+            >
+            </Profile>
+        </div>
+        
         </>
     );
 };

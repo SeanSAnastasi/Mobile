@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { firestore } from "../firebase";
 import BlogsList from "./BlogsList";
+import "../styles.css"
 
 
 function Blog (){
@@ -24,8 +25,10 @@ function Blog (){
 return(
     <div>
         <> 
-        <h1>Blogs List</h1>
-        <BlogsList blogs={blogs}/>
+        <div class="centerContent">
+            <h1 class="header-1">Blogs List</h1>
+            <BlogsList blogs={blogs}/>
+        </div>
         </>
     </div>
 );
