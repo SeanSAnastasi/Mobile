@@ -4,6 +4,7 @@ import AboutPage from "./AboutPage.js";
 import Forums from "./Forums.js";
 import Blog from "./Blog.js";
 import SingleBlog from "./SingleBlog.js";
+import SingleChat from "./SingleChat.js";
 import Chat from "./Chat.js";
 import NotFoundPage from "./NotFoundPage.js";
 import Bar from "./common/Bar.js";
@@ -75,6 +76,8 @@ function App() {
                 <Route path="/forums" component={Forums}></Route>
                 <Route path="/blog/:id" component={SingleBlog}></Route>
                 <Route path="/blog" component={Blog}></Route>
+                <Route path="/chat/therapist/:token" component={SingleChat}></Route>
+                <Route path="/chat/random/:token" component={SingleChat}></Route>
                 <Route path="/chat" component={Chat}></Route>
                 <Route path="/about" component={AboutPage}></Route>
                 <Route path="/profile" component={ManageProfile}></Route>

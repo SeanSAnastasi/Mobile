@@ -58,3 +58,71 @@
 button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.chat-button.MuiButton-containedPrimary {
   margin-bottom: 10%;
 }
+.full-container {
+  position: relative;
+  width: 100%;
+  height: 81vh;
+}
+.chat-area {
+  padding: 5% 0;
+  width: 100%;
+  height: 90%;
+  overflow: scroll;
+}
+.chat-input-area {
+  display: flex;
+  position: absolute;
+  width: 100vw;
+  height: 10%;
+  bottom: 0;
+  left: -4.5%;
+  box-shadow: 0px 0px 0px #888, 0px -1px 10px #888;
+  justify-content: space-around;
+  align-items: center;
+  padding-bottom: 2%;
+}
+.chat-input-area input {
+  width: 80%;
+  height: 80%;
+  border: 1px solid #aaaaaa;
+  border-radius: 5px;
+}
+.chat-input-area input[type=text]:focus {
+  width: 80%;
+  height: 80%;
+  border: 1px solid #aaaaaa;
+  border-radius: 5px;
+  outline: none;
+}
+.chat-input-area button {
+  background-color: #3f51b5;
+  height: 80%;
+  width: 10%;
+  border-radius: 39%;
+  border: 1px solid #aaaaaa;
+  color: white;
+  font-weight: bolder;
+  font-size: 23px;
+}
+.message-sent {
+  margin-right: 0;
+  text-align: left;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  width: 60%;
+  margin-left: 40%;
+  background-color: #eeeeee;
+  border-radius: 6px;
+  padding: 2% 5%;
+}
+.message-received {
+  
+  text-align: left;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  width: 60%;
+  
+  background-color: #eeeeee;
+  border-radius: 6px;
+  padding: 2% 5%;
+}

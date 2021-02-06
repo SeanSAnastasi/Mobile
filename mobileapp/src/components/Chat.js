@@ -10,8 +10,8 @@ function Chat (){
 return(
     <div className="chat-buttons">
         
-            <Button className="chat-button" variant="contained" color="primary" >Chat with a therapist</Button>
-            <Button variant="contained" color="primary" >Chat with a random person</Button>
+            <Button className="chat-button" variant="contained" color="primary" onClick={() =>{history.push("/chat/therapist/1")}}>Chat with a therapist</Button>
+            <Button variant="contained" color="primary" onClick={() =>{history.push("/chat/random/1")}}>Chat with a random person</Button>
         
     </div>
 );
