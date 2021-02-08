@@ -70,7 +70,9 @@ function Bar(props) {
                 <Drawer />
                 <Box flexGrow={1}>
                     <Typography className="app-title" color="inherit" variant="h6">
-                        Forum App
+                        <a href="/" class="forum-bar-title">
+                            Forum App
+                        </a>
                     </Typography>
 
                 </Box>

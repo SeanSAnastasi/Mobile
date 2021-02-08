@@ -1,6 +1,5 @@
 import React, {useContext, useState} from "react";
 import HomePage from "./HomePage.js";
-import AboutPage from "./AboutPage.js";
 import Forums from "./Forums.js";
 import Blog from "./Blog.js";
 import SingleBlog from "./SingleBlog.js";
@@ -19,7 +18,7 @@ import {AuthContext} from "../index.js";
 import { firebaseConfig, firestore } from "../firebase.js";
 import ManageProfile from "./ManageProfile.js";
 import { toast } from "react-toastify";
-
+import Font, { Text } from 'react-font'
 
 
 function App() {
@@ -80,7 +79,6 @@ function App() {
                 <Route path="/chat/therapist/:token" component={SingleChat}></Route>
                 <Route path="/chat/random/:token" component={SingleChat}></Route>
                 <Route path="/chat" component={Chat}></Route>
-                <Route path="/about" component={AboutPage}></Route>
                 <Route path="/profile" component={ManageProfile}></Route>
                 <Route component={NotFoundPage}></Route> 
                 

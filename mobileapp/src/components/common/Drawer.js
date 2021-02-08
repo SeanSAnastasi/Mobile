@@ -41,10 +41,6 @@ export default function TemporaryDrawer() {
             text: "Chat",
             onClick: () => { setState({ open: false }); history.push("/chat"); }
         },
-        {
-            text: "About",
-            onClick: () => { setState({ open: false }); history.push("/about"); }
-        },
     ]
 
   return (

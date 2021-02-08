@@ -41,12 +41,13 @@ export default function SingleBlog(props){
         console.log(blog);
         return(
         <div>
-            
             <div className="blog-header">{blog[id].Title}</div>
-            <div>{blog[id].Content}</div>
+            <div className="blog-text">{blog[id].Content}</div>
         </div>
         );
-    }else{
+    }
+    
+    else {
         return(
             <h1>LOADING</h1>
         );

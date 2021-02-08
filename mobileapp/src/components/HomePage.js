@@ -10,6 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import forumImage from '../images/forum.jpg';
 import blogImage from '../images/blog.jpg';
 import chatImage from '../images/chat.jpg';
+import Font, { Text } from 'react-font'
 
 import "../styles.css";
 

@@ -3,13 +3,17 @@
   text-align: center;
 }
 
+.forum-bar-title {
+  text-decoration: none;
+  color: white;
+}
+
 .centerContent {
   margin: 50px auto;
   width: 80%;
   height: auto;
   padding: 0 5px;
   text-align: center;
-
 }
 
 .card-center {
@@ -84,27 +88,48 @@
   bottom: 0;
 }
 
-.app-title{
+.app-title {
   text-align: center;
 }
-.hamburger svg{
+.hamburger svg {
   color: white;
 }
-.blog-header{
+.blog-header {
   font-weight: bold;
   font-size: 24px;
   text-align: center;
-  margin-top: 2%;
-  margin-bottom: 2%;
+  margin: 5px;
+  padding: 30px;
 }
-.chat-buttons{
+
+.blog-text {
+  padding: 0px 20px 40px 20px;
+  word-wrap: break-word;
+  font-size: 16px;
+  margin-bottom: 40px;
+  height: 100%;
+}
+
+.blog-list {
+  text-decoration: none !important;
+  font-size: 50px;
+}
+
+.chat-buttons {
   display: flex;
-  height: 84vh;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
+  height: 65vh;
 }
+
+.chat-button {
+  display: flex;
+  align-self: center;
+  
+}
+
 button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.chat-button.MuiButton-containedPrimary {
   margin-bottom: 10%;
 }
