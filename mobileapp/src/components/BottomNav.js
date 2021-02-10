@@ -4,6 +4,8 @@ import  { Redirect } from 'react-router-dom';
 import { useHistory } from 'react-router';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import Book from "@material-ui/icons/Book"
+import ForumIcon from '@material-ui/icons/Forum';
+import ChatIcon from '@material-ui/icons/Chat';
 import {BottomNavigation} from '@material-ui/core';
 
 const useStyles = makeStyles({
@@ -30,8 +32,8 @@ return(
     className={classes.root}
     >
         <BottomNavigationAction label={redirects[0]} icon={<Book />} />
-        <BottomNavigationAction label={redirects[1]} icon={<Book />} />
-        <BottomNavigationAction label={redirects[2]} icon={<Book />} />
+        <BottomNavigationAction label={redirects[1]} icon={<ForumIcon />} />
+        <BottomNavigationAction label={redirects[2]} icon={<ChatIcon />} />
     </BottomNavigation>
 );
 }

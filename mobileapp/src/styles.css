@@ -73,15 +73,16 @@
 
 
 .accessibleButton {
-  background-color: #F3C74F !important;
+  background-color: #5D0D6E !important;
+  font-weight: bolder !important;
 }
 
 .accessibleButton:hover {
-  background-color: #F3C74F !important;
+  background-color: #5D0D6E !important;
 }
 
 .accessibleButton:focus {
-  background-color: #F3C74F !important;
+  background-color: #5D0D6E !important;
 }
 .MuiBottomNavigation-root {
   position: fixed;
