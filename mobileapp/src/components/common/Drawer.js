@@ -47,7 +47,7 @@ export default function TemporaryDrawer() {
     <div>
       
         
-          <Button className="hamburger" onClick={toggleDrawer("open", true)}><MailIcon /></Button>
+          <Button aria-label="burger menu" className="hamburger" onClick={toggleDrawer("open", true)}><MailIcon /></Button>
           <Drawer variant="temporary"  open={state['open']} onClose={toggleDrawer('open', false)}>
             
             <List>
