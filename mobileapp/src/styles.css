@@ -100,6 +100,7 @@
   text-align: center;
   margin: 5px;
   padding: 30px;
+  display: flex;
 }
 
 .blog-text {
@@ -200,4 +201,19 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-contained.chat-button.MuiButt
   background-color: #eeeeee;
   border-radius: 6px;
   padding: 2% 5%;
+}
+
+.MuiList-root a  {
+  color: initial;
+  text-decoration: none !important;
+}
+h1 {
+  font-size: 24px;
+}
+.icon-container {
+  display: flex;
+  align-items: center;
+}
+h1.forum-header {
+  width: 90%;
 }

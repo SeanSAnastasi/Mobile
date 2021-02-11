@@ -26,10 +26,10 @@ function SingleChat(props) {
     }
     useEffect(() => {
         scrollToMyRef();
-    })
+    }, [messages])
     const handleChange = (event) => {
         setPlaceholder(event.target.value);
-        scrollToMyRef();
+        
     }
     
     const scrollToMyRef = () => {

@@ -3,6 +3,7 @@ import HomePage from "./HomePage.js";
 import Forums from "./Forums.js";
 import Blog from "./Blog.js";
 import SingleBlog from "./SingleBlog.js";
+import SingleForum from "./SingleForum.js";
 import SingleChat from "./SingleChat.js";
 import Chat from "./Chat.js";
 import NotFoundPage from "./NotFoundPage.js";
@@ -73,6 +74,7 @@ function App() {
             <Container maxWidth="xl">
                 <Switch>
                 <Route path="/" component={HomePage} exact></Route>
+                <Route path="/forums/:id" component={SingleForum}></Route>
                 <Route path="/forums" component={Forums}></Route>
                 <Route path="/blog/:id" component={SingleBlog}></Route>
                 <Route path="/blog" component={Blog}></Route>
