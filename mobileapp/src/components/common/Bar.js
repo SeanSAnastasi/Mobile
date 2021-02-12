@@ -13,7 +13,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import "../../styles.css";
 import Profile from "../ManageProfile";
 import { firestore } from "../../firebase";
-
+import Logo from "../../images/logo.png";
 
 function Bar(props) {
 
@@ -71,10 +71,11 @@ function Bar(props) {
                 <Box flexGrow={1}>
                     <Typography className="app-title" color="inherit" variant="h6">
                         <a href="/" class="forum-bar-title">
-                            Forum App
+                            <IconButton className="app-title">
+                                 <img src={Logo} alt="Talk about it logo" style={{maxWidth: '150px', padding: '0', lineHeight: '0', margin: '0'}}></img>
+                            </IconButton>
                         </a>
                     </Typography>
-
                 </Box>
                 
                 {props.isLoggedIn && (
@@ -95,7 +96,7 @@ function Bar(props) {
                 </>
                 )}
                 {!props.isLoggedIn && 
-                <Button className="accessibleButton" variant="contained" style={{color: "white", textDecoration:"none"}} onClick={props.onSignInClick}>
+                <Button className="accessibleButton" variant="contained" style={{color: "white", textDecoration:"none", fontSize: "11px"}} onClick={props.onSignInClick}>
                     Sign in
                 </Button>
                 }

@@ -19,8 +19,8 @@ function HomePage() {
     return (
         <>
         <div class="centerContent">
-            <h1 class="header-1">Welcome to Forum App!</h1>
-            <p>Forum App is a place where you can speak openly and anonymously about your mental health experiences.</p>
+            <h1 class="header-1">Welcome to TalkAboutIt!</h1>
+            <p>TalkAboutIt is a place where you can speak openly and anonymously about your mental health experiences.</p>
             <p>In our forums you can share experiences, ask questions or vent your emotions with people who know what it is like to experience mental health difficulties.</p>
             <div class="card-row">
                 <div class="card-column">
