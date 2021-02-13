@@ -218,3 +218,11 @@ h1 {
 h1.forum-header {
   width: 90%;
 }
+.comment.chat-input-area {
+  padding-top: 2%;
+  position: relative;
+  margin-top: 10%;
+}
+.MuiContainer-root {
+  padding-bottom: 20%;
+}

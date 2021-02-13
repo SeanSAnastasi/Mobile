@@ -3,13 +3,20 @@ import FavoriteBorderOutlinedIcon from '@material-ui/icons/FavoriteBorderOutline
 import FavoriteOutlinedIcon from '@material-ui/icons/FavoriteOutlined';
 import firebase from "firebase";
 import { firebaseConfig, firestore } from "../firebase.js";
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import { ListSubheader } from "@material-ui/core";
+import Divider from '@material-ui/core/Divider';
 
 export default function SingleForum(props){
     const id = props.match.params.id;
     const[forum, setForum] = useState([]);
+    const[comments, setComments] = useState([]);
     const [forumNumericalId, setForumNumericalId ] = useState(-1);
     const[iconFilled, setIconFilled] = useState(false);
     const[likes, setLikes] = useState([]);
+    const [placeholder, setPlaceholder] = useState("");
     const user = JSON.parse(
         window.sessionStorage.getItem(
             `firebase:authUser:${firebaseConfig.apiKey}:[DEFAULT]`
@@ -39,7 +46,7 @@ export default function SingleForum(props){
     }, []);
     useEffect(() => { 
     if(forum != null){
-        console.log("IN EFFECT");
+        
         for(var i = 0; i< forum.length; i++){
             if(forum[i].ForumId === id){
                 setForumNumericalId(i);
@@ -77,7 +84,7 @@ export default function SingleForum(props){
 
     useEffect(() => { 
     if(user && likes.length > 0){
-        console.log(likes);
+        
         for(var i = 0; i< likes.length; i++){
             if(likes[i].ForumId == id && likes[i].UserId == user.uid){
                     setIconFilled(true);
@@ -85,7 +92,56 @@ export default function SingleForum(props){
         }
     } 
     }, [likes]);
+
+    useEffect(() => { 
+          
+        firestore
+        .collection("Comments")
+        .where("PostId", "==", id)
+        .get()
+        .then(querySnapshot => {
+            const _comments = querySnapshot.docs.map(doc => {
+                let d = doc.data();
+                
+                return d;               
+                
+            });
+            
+            setComments(_comments);
+            
+            
+        });         
     
+    }, []);
+    
+    const addComment = (event) => {
+        event.preventDefault();
+        if(placeholder != "" && user){
+            firestore.collection("Comments").add({
+                
+                Comment: placeholder,
+                PostId: id,
+                UserId: user.uid,
+                Username: user.displayName
+
+            })
+            setComments([...comments, {
+                Comment: placeholder,
+                PostId: id,
+                UserId: user.uid,
+                Username: user.displayName
+            }]);
+            console.log(comments);
+            
+        }
+        setPlaceholder("");
+    }
+
+    const handleChange = (event) => {
+        setPlaceholder(event.target.value);
+        
+    }
+
     const favouriteClick = () => {
         if(user){
 
@@ -111,7 +167,7 @@ export default function SingleForum(props){
         }
        setIconFilled(!iconFilled);
         // setLikes(likes);
-        console.log(iconFilled);
+        
         
     }
     }
@@ -128,6 +184,25 @@ export default function SingleForum(props){
                 </div>
             </div>
             <div className="blog-text">{forum[forumNumericalId].Description}</div>
+            <div>
+                <h3>Comments</h3>
+                {comments.map(comment => (
+                    <ListItem divider>
+                        <ListItemText primary={comment.Username} secondary={comment.Comment}></ListItemText>
+                        
+                        <Divider />
+                    </ListItem>
+                    
+                ))}
+            </div>
+            <form onSubmit={addComment}>
+                <div className="comment chat-input-area">
+                    
+                    <input type="text" placeholder="Enter comment..." name="message" value={placeholder} onChange={handleChange}></input>
+                    <button type="submit">></button>
+                    
+                </div>
+            </form>
         </div>
         );
     }
