@@ -1,0 +1,23 @@
+{
+  "name": "mental-health",
+  "displayName": "mental-health",
+  "web": {
+    "build": {
+      "babel": {
+        "include": ["react-router-native"]
+      }
+    }
+  },
+  "expo": {
+    "name": "mental-health",
+    "slug": "mental-health",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "android": {
+      "package": "com.mentalhealth",
+      "googleServicesFile": "./google-services.json"
+    }
+  }
+}

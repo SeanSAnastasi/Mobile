@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "234231746169",
+    "firebase_url": "https://mental-health-3223c-default-rtdb.firebaseio.com",
+    "project_id": "mental-health-3223c",
+    "storage_bucket": "mental-health-3223c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:234231746169:android:fd559ea0d1cb0da4ea0ea8",
+        "android_client_info": {
+          "package_name": "com.mentalhealth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "234231746169-bv7cdrs3un9i5ibcne5bndbqulinpcgb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZ7TNnL0rmVE5mIXyYMLKPWyBxWRCSYHY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "234231746169-bv7cdrs3un9i5ibcne5bndbqulinpcgb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
