@@ -8,8 +8,8 @@ function TextInput(props) {
     textField: {
       marginLeft: "1em",
       marginRight: "1em",
-      width: 200
-    }
+      width: 200,
+    },
   });
 
   const classes = useStyles();

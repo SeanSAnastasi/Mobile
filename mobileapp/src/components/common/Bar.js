@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import {NavLink} from "react-router-dom";
+import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import Drawer from "./Drawer";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -16,93 +16,112 @@ import { firestore } from "../../firebase";
 import Logo from "../../images/logo.png";
 
 function Bar(props) {
+  const activeStyle = { color: "#F3C74F", fontWeight: "bold" };
 
-    const activeStyle = { color: "#F3C74F", fontWeight: "bold" };
+  const [menu, setMenu] = useState({
+    anchorEl: null,
+  });
 
-    const [menu, setMenu] = useState({
-        anchorEl: null
+  const openMenu = (event) => {
+    const anchorEl = event.currentTarget;
+
+    setMenu({
+      anchorEl: anchorEl,
     });
+  };
 
-    const openMenu = event => {
-        const anchorEl = event.currentTarget;
+  const closeMenu = () => {
+    setMenu({
+      anchorEl: null,
+    });
+  };
 
-        setMenu({
-            anchorEl: anchorEl
-        });
-    };
+  const getNameInitials = () => {
+    // var temp =  firestore.collection("users").doc(props.user.email).get()
+    // console.log("Props user account", props.userAccount)
+    // console.log("Props user", props.user)
+    // console.log("TEMP", temp)
 
-    const closeMenu = () => {
-        setMenu({
-            anchorEl: null,
-        })
+    const user = props.user;
+
+    const displayName = user.displayName;
+
+    if (!displayName) return "?";
+
+    const displayNameParts = displayName.split(" ");
+    if (displayNameParts.length > 1) {
+      return displayNameParts[0].charAt(0) + displayNameParts[1].charAt(0);
+    } else {
+      return displayNameParts[0].charAt(0);
     }
+  };
 
-    const getNameInitials = () => {
-        // var temp =  firestore.collection("users").doc(props.user.email).get()
-        // console.log("Props user account", props.userAccount)
-        // console.log("Props user", props.user)
-        // console.log("TEMP", temp)
+  const onSignOutClick = () => {
+    closeMenu();
+    props.onSignOutClick();
+  };
 
-        const user = props.user;
+  return (
+    <AppBar color="primary" position="static">
+      <Toolbar variant="regular">
+        <Drawer />
+        <Box flexGrow={1}>
+          <Typography className="app-title" color="inherit" variant="h6">
+            <a href="/" class="forum-bar-title">
+              <IconButton className="app-title">
+                <img
+                  src={Logo}
+                  alt="Talk about it logo"
+                  style={{
+                    maxWidth: "150px",
+                    padding: "0",
+                    lineHeight: "0",
+                    margin: "0",
+                  }}
+                ></img>
+              </IconButton>
+            </a>
+          </Typography>
+        </Box>
 
-        const displayName = user.displayName;
+        {props.isLoggedIn && (
+          <>
+            <IconButton onClick={openMenu}>
+              <Avatar
+                className="accessibleButton"
+                style={{ color: "white", textDecoration: "none" }}
+                alt="Avatar"
+              >
+                {getNameInitials()}
+              </Avatar>
+            </IconButton>
 
-        if(!displayName) return "?";
-
-        const displayNameParts = displayName.split(" ");
-        if(displayNameParts.length > 1 ) {
-            return displayNameParts[0].charAt(0) + displayNameParts[1].charAt(0);
-        }
-            
-        else {
-            return displayNameParts[0].charAt(0);
-        }
-    };
-
-    const onSignOutClick = () => {
-        closeMenu();
-        props.onSignOutClick();
-    }
-
-    return (
-        <AppBar color="primary" position="static">
-            <Toolbar variant="regular">
-                <Drawer />
-                <Box flexGrow={1}>
-                    <Typography className="app-title" color="inherit" variant="h6">
-                        <a href="/" class="forum-bar-title">
-                            <IconButton className="app-title">
-                                 <img src={Logo} alt="Talk about it logo" style={{maxWidth: '150px', padding: '0', lineHeight: '0', margin: '0'}}></img>
-                            </IconButton>
-                        </a>
-                    </Typography>
-                </Box>
-                
-                {props.isLoggedIn && (
-                <>
-                    <IconButton onClick={openMenu}>
-                        <Avatar className="accessibleButton"
-                            style={{color:"white", textDecoration:"none"}}
-                            alt="Avatar">
-                            {getNameInitials()}
-                        </Avatar>
-                    </IconButton>
-
-                    <Menu anchorEl={menu.anchorEl} open={Boolean(menu.anchorEl)} onClose={closeMenu}>
-                        <MenuItem disabled>{props.user.displayName}</MenuItem>
-                        <MenuItem ><a href="/profile">Manage Profile</a></MenuItem>
-                        <MenuItem onClick={onSignOutClick}>Sign Out</MenuItem>
-                    </Menu>
-                </>
-                )}
-                {!props.isLoggedIn && 
-                <Button className="accessibleButton" variant="contained" style={{color: "white", textDecoration:"none", fontSize: "11px"}} onClick={props.onSignInClick}>
-                    Sign in
-                </Button>
-                }
-            </Toolbar>
-        </AppBar>
-    );
+            <Menu
+              anchorEl={menu.anchorEl}
+              open={Boolean(menu.anchorEl)}
+              onClose={closeMenu}
+            >
+              <MenuItem disabled>{props.user.displayName}</MenuItem>
+              <MenuItem>
+                <a href="/profile">Manage Profile</a>
+              </MenuItem>
+              <MenuItem onClick={onSignOutClick}>Sign Out</MenuItem>
+            </Menu>
+          </>
+        )}
+        {!props.isLoggedIn && (
+          <Button
+            className="accessibleButton"
+            variant="contained"
+            style={{ color: "white", textDecoration: "none", fontSize: "11px" }}
+            onClick={props.onSignInClick}
+          >
+            Sign in
+          </Button>
+        )}
+      </Toolbar>
+    </AppBar>
+  );
 }
 
 export default Bar;
