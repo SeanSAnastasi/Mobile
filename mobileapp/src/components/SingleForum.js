@@ -20,7 +20,7 @@ import { AuthContext } from "../index.js";
 import { toast } from "react-toastify";
 import Button from "@material-ui/core/Button";
 
-const emails = ["username@gmail.com", "user02@gmail.com"];
+
 const useStyles = makeStyles({
   avatar: {
     backgroundColor: blue[100],
@@ -112,11 +112,11 @@ SimpleDialog.propTypes = {
 
 export default function SingleForum(props) {
   const [open, setOpen] = React.useState(false);
-  const [selectedValue, setSelectedValue] = React.useState(emails[1]);
+  
 
-  const handleClose = (value) => {
+  const handleClose = () => {
     setOpen(false);
-    setSelectedValue(value);
+    
   };
   const id = props.match.params.id;
   const [forum, setForum] = useState([]);
@@ -292,7 +292,7 @@ export default function SingleForum(props) {
           </div>
         </form>
         <SimpleDialog
-          selectedValue={selectedValue}
+          
           open={open}
           onClose={handleClose}
         />
