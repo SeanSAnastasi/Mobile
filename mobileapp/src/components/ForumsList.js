@@ -159,35 +159,36 @@ function ForumsList(props) {
 
   let url = useRouteMatch();
   return (
-    <List>
-      <ListSubheader>
-        Forum Name <Button
-        className="accessibleButton addForum"
-        variant="contained"
-        style={{ color: "white", textDecoration: "none", fontSize: "11px" }}
-        onClick={() => {setOpen(true)}}
-        >
-          Add Forum
-        </Button>
-      </ListSubheader>
-      <SimpleDialog
-          
-          open={open}
-          onClose={handleClose}
-        />
-      {props.forums.map((forum) => (
-        <Link to={`${url["path"]}/${forum.ForumId}`}>
-          <ListItem divider>
-            <ListItemText
-              primary={forum.ForumName}
-              secondary={forum.Description}
-            ></ListItemText>
-            <ListItemText primary={forum.Threads}></ListItemText>
-            <Divider />
-          </ListItem>
-        </Link>
-      ))}
-    </List>
+    <div class="forum-list">
+      <List>
+        <ListSubheader>
+          Forum Name <Button
+          className="accessibleButton addForum"
+          variant="contained"
+          style={{ color: "white", textDecoration: "none", fontSize: "11px" }}
+          onClick={() => {setOpen(true)}}
+          >
+            Add Forum
+          </Button>
+        </ListSubheader>
+        <SimpleDialog
+            
+            open={open}
+            onClose={handleClose}
+          />
+        {props.forums.map((forum) => (
+          <Link to={`${url["path"]}/${forum.ForumId}`}>
+            <ListItem divider>
+              <ListItemText
+                primary={forum.ForumName}
+                secondary={forum.Description}
+              ></ListItemText>
+              <Divider />
+            </ListItem>
+          </Link>
+        ))}
+      </List>
+    </div>
   );
 }
 

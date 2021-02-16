@@ -281,15 +281,15 @@ export default function SingleForum(props) {
         </div>
         <form onSubmit={addComment}>
           <div className="comment chat-input-area">
-            <input
-              type="text"
-              placeholder="Enter comment..."
-              name="message"
-              value={placeholder}
-              onChange={handleChange}
-            ></input>
-            <button type="submit">></button>
-          </div>
+              <input
+                type="text"
+                placeholder="Enter comment..."
+                name="message"
+                value={placeholder}
+                onChange={handleChange}
+              ></input>
+              <button type="submit">&gt;</button>
+           </div>
         </form>
         <SimpleDialog
           
